@@ -31,7 +31,7 @@ DATA** conv1d(int f_n, int f_ch, int f_size, DATA conv_w[f_n][f_ch][f_size], DAT
         {
             temp = 0;
             // Calculate the convolution sum for 1 output sample
-            for (int x_ch = 0; x_ch < in_ch; x_ch++) // iterate over input channels 
+            for (int x_ch = 0; x_ch < in_ch; x_ch++) // iterate over input channels
             {
                 int start_pt = size_i * stride;
                 for(int i = start_pt, j = 0; i < (start_pt + f_size); i++, j++) // data slice to multiply with filter
@@ -42,7 +42,7 @@ DATA** conv1d(int f_n, int f_ch, int f_size, DATA conv_w[f_n][f_ch][f_size], DAT
             }
             y[ch_i][size_i] = temp + conv_b[ch_i];
             // if(ch_i == 0)
-            //     printf("%f\n", temp);
+            //     printf("%d\n", temp);
         }
     }
 
@@ -53,7 +53,7 @@ DATA** conv1d(int f_n, int f_ch, int f_size, DATA conv_w[f_n][f_ch][f_size], DAT
 }
 
 // Fucntion: batchnorm1d()
-// Input:   
+// Input:
 
 DATA** batchnorm1d(int ch, DATA bnorm_w[ch], DATA bnorm_b[ch], DATA bnorm_mean[ch], DATA bnorm_var[ch],
                     int in_ch, int in_size, DATA **x)
@@ -93,7 +93,7 @@ DATA** linear(int w_row, int w_col, DATA lin_w[1][w_row][w_col], DATA lin_b[w_co
     DATA temp = 0;
 
     for(int col_i = 0; col_i < w_col; col_i++)
-    {   
+    {
         temp = 0;
         for(int row_i = 0; row_i < w_row; row_i++)
         {
@@ -101,7 +101,7 @@ DATA** linear(int w_row, int w_col, DATA lin_w[1][w_row][w_col], DATA lin_b[w_co
             //temp = temp + (x[row_i][0] * lin_w[0][row_i][col_i]);
         }
         y[col_i][0] = temp + lin_b[col_i];
-        //printf("%f\n", y[0][col_i]);
+        //printf("%d\n", y[0][col_i]);
     }
 
     // To free the memory for the output matrix of previous function
