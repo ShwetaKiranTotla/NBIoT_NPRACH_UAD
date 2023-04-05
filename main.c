@@ -31,15 +31,16 @@ int main()
 		weights_t nn_w;
 		rxData_ant2_t rx_data;
 		LUT_t sig_lut;
-		LUT_t lgsm_lut;
-		rx_data.rxDataMat_1 = createMatrix_3D(NUM_ITEM, 2 , SMPL_PER_PRMB);
-		rx_data.rxDataMat_2 = createMatrix_3D(NUM_ITEM, 2 , SMPL_PER_PRMB);
-		load_data_all(&nn_w, &sig_lut, &lgsm_lut);
+
+		rx_data.rxDataMat = createMatrix_3D(NUM_ITEM, 2 , SMPL_PER_PRMB);//changed
+		load_data_all(&nn_w, &sig_lut);//, &lgsm_lut);
 		load_rx_data_ant2(&rx_data);
-		UAD_PRM0_CVA12_eval_ant2(&nn_w, &rx_data, &sig_lut, &lgsm_lut);
+		UAD_PRM0_CVA12_eval_ant2(&nn_w, &rx_data, &sig_lut);//, &lgsm_lut);
 	}
 	else
 	{
 		printf("Number of Rx Antenna can be 1 or 2");
 	}
+
+	//print_mat3d(NUM_ITEM, 2, 160, &rx_data.rxDataMat);
 }
