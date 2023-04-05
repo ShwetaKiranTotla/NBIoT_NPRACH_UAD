@@ -105,7 +105,7 @@ DATA** linear(int w_row, int w_col, DATA lin_w[1][w_row][w_col], DATA lin_b[w_co
     }
 
     // To free the memory for the output matrix of previous function
-    //memory_free(x, in_size);
+    memory_free(x, in_size);
 
     return y;
 }
