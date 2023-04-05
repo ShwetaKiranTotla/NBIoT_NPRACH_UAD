@@ -3,15 +3,15 @@
 #include <math.h>
 
 ////////// CONSTANTS //////////
-#define NUM_ITEM		24
-#define NUM_INP_SMPL	1920
+#define NUM_ITEM	2
+#define NUM_INP_SMPL	160
 #define SMPL_PER_PRMB	40 //40 for cva1 160 for cva 2 and 640 for cva 3
-#define SCALE_FAC		256	// 2^8
-#define SCALE_BITS		8
+#define SCALE_FAC	16	// 2^8
+#define SCALE_BITS	4
 #define UAD_THRESHOLD	0.7 //0.65
-#define LUT_LEN			161
+#define LUT_LEN		161
 #define NUM_RX_ANTENNA	2
-#define DOWN_SCL8	8
+#define DOWN_SCL8	4
 
 ////////// DATA TYPE DEFINITION //////////
 typedef short DATA;
@@ -72,7 +72,6 @@ struct LUT
 };
 typedef struct LUT LUT_t;
 
-
 ////////// FUNCTION PROTOTYPES //////////
 
 void read_file(char* name, int size, DATA *data_in);
@@ -91,14 +90,15 @@ DATA lookup_LUT(LUT_t *lut, DATA x);
 DATA** sum_vectors(int size, DATA **x, DATA **y);
 
 void load_mat3d(int ch, int row, int col, DATA (*mat)[ch][row][col], DATA *data_in);
-void load_data_all(weights_t *nn_w, LUT_t *sig_lut, LUT_t *lgsm_lut);
+void load_rx_mat3d(int ch, int row, int col, DATA ***rx_mat, DATA *data_in);
+void load_data_all(weights_t *nn_w, LUT_t *sig_lut);//, LUT_t *lgsm_lut);
 void load_rx_data_ant1(rxData_t *rx_data);
 void load_rx_data_ant2(rxData_ant2_t *rx_data);
 
-void UAD_PRM0_CVA12_eval(weights_t *nn_w, rxData_t *rx_data, LUT_t *sig_lut, LUT_t *lgsm_lut);
-void UAD_PRM0_CVA12_eval_ant2(weights_t *nn_w, rxData_ant2_t *rx_data, LUT_t *sig_lut, LUT_t *lgsm_lut);
+//void UAD_PRM0_CVA12_eval(weights_t *nn_w, rxData_t *rx_data, LUT_t *sig_lut, LUT_t *lgsm_lut);
+void UAD_PRM0_CVA12_eval_ant2(weights_t *nn_w, rxData_ant2_t *rx_data, LUT_t *sig_lut);//, LUT_t *lgsm_lut);
 DATA** UAD_PRM0_CVA12_NN(weights_t *nn_w, DATA **x);
-DATA** UAD_PRM0_CVA12_Layer6(weights_t *nn_w, DATA **x, LUT_t *sig_lut);
+DATA** UAD_PRM0_CVA12_Layer7(weights_t *nn_w, DATA **x, LUT_t *sig_lut);
 DATA** UAD_PRM0_CVA12_Layer6a(weights_t *nn_w, DATA **x);
 DATA infer_uad(DATA **x);
 DATA infer_cva(DATA **x, DATA uad);
@@ -108,8 +108,12 @@ DATA** conv1d(int f_n, int f_ch, int f_size, DATA conv_w[f_n][f_ch][f_size], DAT
             int out_ch, int out_size);
 DATA** batchnorm1d(int ch, DATA bnorm_w[ch], DATA bnorm_b[ch], DATA bnorm_mean[ch], DATA bnorm_var[ch],
                     int in_ch, int in_size, DATA **x);
+DATA** batchnorm1d_1(int ch, DATA bnorm_w[ch], DATA bnorm_b[ch], DATA bnorm_mean[ch], DATA bnorm_var[ch],
+                    int in_ch, int in_size, DATA **x);
 DATA** linear(int w_row, int w_col, DATA lin_w[1][w_row][w_col], DATA lin_b[w_col],
                 int in_size, DATA **x);
 
 DATA** relu(int in_ch, int in_size, DATA **x);
+DATA** relu_1(int in_ch, int in_size, DATA **x);
 DATA** sigmoid(int in_ch, int in_size, DATA **x, LUT_t *sig_lut);
+
