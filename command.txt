@@ -1,0 +1,1 @@
+gcc dl_nprach_head.h LTE-eNB-DataTypes.h activations.c dl_functions.c load_data.c LTE-eNB-DataTypes.h mat_operations.c UAD_PRM0_CVA12.c util.c main.c -lm
