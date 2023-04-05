@@ -1,6 +1,8 @@
 # NPRACH_FixedPoint
 NPRACH UAD Neural Network implementation in Fixed point C.
 #
+## command
+gcc command to run the NN.
 ## dl_nprach_head
 Header file for the neural network
 ## Activations
