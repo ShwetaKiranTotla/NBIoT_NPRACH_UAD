@@ -7,6 +7,8 @@ Header file for the neural network
 This file contains all the activation functions like relu, sigmoid, etc.
 ## load_data
 File to load all the data required for NN implementation.
+l1_result contains the python output for layer 1 of the NN.
+Weights and RxData have the weights of layer 1 and input data of 1 subcarrier respectively.
 ## dl_functions
 This file contains deep learning functions used in this neural network including Batch Normalization, 1D Convolution, etc.
 ## UAD_PRM0_CVA12
