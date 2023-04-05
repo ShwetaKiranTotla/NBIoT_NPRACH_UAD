@@ -118,8 +118,6 @@ void load_data_all(weights_t *nn_w, LUT_t *sig_lut)//, LUT_t *lgsm_lut)
 	read_file("/home/edc/EDL_2023_200030053/DL_Receiver_C_Fixed_Rxsignal/CodeBlocks_Project/LUT/sigmoid_LUT_x.txt", LUT_LEN, sig_lut->x);
 	read_file("/home/edc/EDL_2023_200030053/DL_Receiver_C_Fixed_Rxsignal/CodeBlocks_Project/LUT/sigmoid_LUT_y.txt", LUT_LEN, sig_lut->y);
 
-	// Logsoftmax LUT
-	*/
 }
 
 void load_rx_data_ant2(rxData_ant2_t *rx_data)
