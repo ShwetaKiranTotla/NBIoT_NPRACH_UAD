@@ -111,10 +111,10 @@ DATA mult_fixed(DATA a, DATA b)
 {
     DATA y;
 
-    int mult = ((int)a) * ((int)b);
+    long int mult = ((long int)a) * ((long int)b);
     mult = mult / SCALE_FAC;
-    y = (DATA)mult;
-
+    y = (DATA)mult;       
+    //printf("%hi\n",y);
     return y;
 }
 
