@@ -1,5 +1,5 @@
-# NPRACH_FixedPoint
-NPRACH UAD Neural Network implementation in Fixed point C.
+# NPRACH NBIoT UAD Fixed Point Implemetation
+Narrowband Physical Random Access CHannel (NPRACH) Narrowband Internet of Things (NBIoT) User Activity Detection (UAD) Receiver Neural Network implementation in Fixed point C.
 #
 ## command
 gcc command to run the NN.
